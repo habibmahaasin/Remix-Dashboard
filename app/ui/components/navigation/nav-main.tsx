@@ -1,6 +1,6 @@
 "use client";
 
-import { useNavigate } from "@remix-run/react";
+import { useLocation, useNavigate } from "@remix-run/react";
 import { ChevronRight, type LucideIcon } from "lucide-react";
 import React from "react";
 import {
@@ -34,10 +34,11 @@ export function NavMain({
   }[];
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Features</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item, index) => (
           <React.Fragment key={index}>
@@ -72,6 +73,10 @@ export function NavMain({
               </Collapsible>
             ) : (
               <SidebarMenuButton
+                className={`${
+                  location.pathname === item.url &&
+                  "bg-black text-white group-hover:bg-black group-hover:text-white"
+                }`}
                 tooltip={item.title}
                 key={index}
                 onClick={() => {

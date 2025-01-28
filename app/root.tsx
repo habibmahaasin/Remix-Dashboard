@@ -7,7 +7,7 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import styles from "./tailwind.css?url";
-
+import RemixTopLoader from "remix-toploader";
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
@@ -34,6 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <RemixTopLoader color="#333" showSpinner={false} />
         {children}
         <ScrollRestoration />
         <Scripts />
